@@ -2,41 +2,42 @@
 public class DualSelectionSort {
 
 	public static void main(String[] args) {
-		 int arr2[] = {6,1,7,2,8,3,9,4,0,5};
-	       selectionSort(arr2);
-	       for(int i=0; i<arr2.length; i++)
-	           System.out.print(arr2[i]+" ");
+		 int myArray[] = {12,123,1,28,183,16};
+	       selectionSort(myArray);
+	       for(int i=0; i<myArray.length; i++)
+	           System.out.print(myArray[i]+" ");
 	       System.out.println();
 
 	}
-	// method where we are putting min and max at correct position
-	   public static void selectionSort(int arr[]){
+
+	   public static void selectionSort(int myArray[]){
 	      
 	       int i=0;
-	        while(i<=(arr.length-i-1)) {
-	          int minIndex = i;
-	          int maxIndex=arr.length-i-1;
-	          for (int j = i; j <=arr.length-i-1; j++) {
-	           if (arr[j] <=arr[minIndex]) {
-	             minIndex = j;    
+	        while(i<=(myArray.length-i-1)) {
+	          int min = i;
+	          int max=myArray.length-i-1;
+	          for (int j = i; j <=myArray.length-i-1; j++) {
+	           if (myArray[j] <=myArray[min]) {
+	             min= j;    
 	             }
-	           if(arr[j]>=arr[maxIndex]){
-	              maxIndex = j;
+	           if(myArray[j]>=myArray[max]){
+	              max = j;
 	             }
 	          }
-	          swap(arr, i, minIndex);
-	          if(i == maxIndex) {
-	                 maxIndex = minIndex;
+	          swap(myArray, i, min);
+	          if(i == max) {
+	                 max = min; 
 	           }
-	          swap(arr, (arr.length-i-1), maxIndex);
+	          swap(myArray, (myArray.length-i-1), max);
 	        i++;
 	        }
+	   
 	   }
 	  
-	   private static void swap(int[] arr, int oldIndex, int newIndex){
-	        int temp=arr[oldIndex];
-	        arr[oldIndex]=arr[newIndex];
-	        arr[newIndex]=temp;
+	   private static void swap(int[] arr, int IndexBefore, int IndexAfter){
+	        int temp=arr[IndexBefore];
+	        arr[IndexBefore]=arr[IndexAfter];
+	        arr[IndexAfter]=temp;
 	   }
 	   
 
