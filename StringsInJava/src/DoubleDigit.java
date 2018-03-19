@@ -1,27 +1,18 @@
 
 public class DoubleDigit {
 	public static void main(String[] args) {
-		
-		int num=-348;
-		
-		if(num<0)
-			System.out.println( "-" + doubleDigit(num));
-		
-		else {
-			System.out.println(doubleDigit(num));						
-		}
-			
-	}
-	
-	public static String doubleDigit(int n) {
 				
-		if( n==0){
-			return "0";
-		}
-			
-		else {
-			return doubleDigit(n/10 ) + ( n % 10 + (n % 10 ) * 10 );
-		}
+			System.out.println(doubleDigit(348));									
+	}	
+	public static int doubleDigit(int n) {
+				
+		if (n < 10) {
+			return (10 * n) + n;
+		} else {
+			int a = doubleDigit(n / 10);
+			int b = doubleDigit(n % 10);
+			return (100 * a) + b;
+		}		
 		
 	}
 }
