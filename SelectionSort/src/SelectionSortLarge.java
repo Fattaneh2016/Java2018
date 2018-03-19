@@ -16,7 +16,7 @@ public class SelectionSortLarge {
 	                   max = j;
 	           }
 	           swap(mySort, i, max);
-	           System.out.print(mySort[i]+", ");
+	           System.out.print(mySort[i]+ " ");
 	       }
 		
 	}
