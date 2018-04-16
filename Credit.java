@@ -117,33 +117,6 @@ public class Credit extends CostSources implements  Comparable<Credit>{
 	}
 
 
-
-	/*
-	 * 
-	 * public boolean equals(Object o) {
-		Point other = (Point) o;
-		return x == other.x && y == other.y;
-}
-
-	 * Define equality of state.
-
-	   @Override public boolean equals(Object aThat) {
-	     if (this == aThat) return true;
-	     if (!(aThat instanceof Account)) return false;
-
-	     Account that = (Account)aThat;
-	     return
-	       ( this.fAccountNumber == that.fAccountNumber ) &&
-	       ( this.fAccountType == that.fAccountType ) &&
-	       ( this.fBalance == that.fBalance ) &&
-	       ( this.fIsNewAccount == that.fIsNewAccount ) &&
-	       ( this.fFirstName.equals(that.fFirstName) ) &&
-	       ( this.fLastName.equals(that.fLastName) )
-	     ;
-	   }
-
-	 */
-
 }
 
 
