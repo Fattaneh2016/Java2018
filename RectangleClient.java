@@ -1,12 +1,24 @@
 
 public class RectangleClient {
-	public static void main(String[] args) {		
-		Rectangle myRec=new Rectangle(2, 5, 8, 10);
-		System.out.println(myRec.contains(2, 5));
-		System.out.println(myRec.contains(10, 15));
+
+	
+	public static void main(String[] args) {
 		
-		System.out.println("this rectangle contains point (5, 6) " + myRec.contains(5, 6));
-		System.out.println(myRec.toString());
+		
+		Rectangle rec1=new Rectangle();
+		Rectangle rec2=new Rectangle();		
+		
+		rec1.setfields(12, 2, 3, 4);		
+		rec2.setfields(10, 4, 60, 8);
+				
+		
+		System.out.println("The area of rectangle is " + rec1.getArea() + 
+				" and the x-coordinate is " + rec1.getX() +" and the y-coordinate is " + rec1.getY() );
+		
+		System.out.println("The area of rectangle is " + rec2.getArea() + 
+				" and the x-coordinate is " + rec2.getX() +" and the y-coordinate is " + rec2.getY() );
+		
+		
 	}
 
 }
