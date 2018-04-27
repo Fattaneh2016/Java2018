@@ -1,64 +1,61 @@
+import java.util.ArrayList;
 
-public class Credit extends CostSources implements  Comparable<Credit>{
+public class Credit extends CostSources implements Comparable<Credit> {
 
-	public static final int goodCredit=710;
-	private static int id=10;
-	private String cardId=null;
+	private static int countCredit=0;
+	public static final int ExcellentCredit=740;
+	public static final int GoodCredit=600;
+	public static final int BadCredit=500;
+
 	private String creditName;
+	private int id;
 	private String dueDate;
-
 	private double availableToSpend;
 	private double minimumPayment;	
 	private double creditLimit;
 	private double currentBalance;
+	private double amount;
 
-
-
-	public Credit(int cardId,String name,double creditLimit,double currentBalance,double withdraw,double amount) {
-		super(amount);
-		id=id++;
-		currentBalance=0;
-		creditName=name;
-		creditLimit=2000;
-		withdraw=0;
-
+	ArrayList<Credit> CreditList =new ArrayList<Credit>();
+	
+	public Credit(double initAmount , String initCreditName,String initDueDate ,
+			double initAvailableToSpend,double initMinimumPayment,
+			double initCreditLimit,double initCurrentBalance)
+	{
+		super(initAmount);
+		countCredit++;
+		this.id=countCredit;		
+		this.amount=initAmount;
+		this.creditName=initCreditName;
+		this.setDueDate(initDueDate);
+		this.availableToSpend=initAvailableToSpend;
+		this.minimumPayment=initMinimumPayment;
+		this.creditLimit=initCreditLimit;
+		this.currentBalance=initCurrentBalance;
+	}	
+	public int getcountCredit() {
+		return countCredit;
 	}
-	public void makePayment(double amount){
-		super.deposit(amount);
+	public void makePayment(double payAmount){
+		this.setAmount(this.getAmount() + payAmount);
 	}
-	public String getCardId() {
-		return cardId;
+	public double getminimumPayment() {
+		return minimumPayment;
 	}
-	public void setCardId() {
-		this.cardId=cardId;
+	public void setminimumPayment(double minimumPayment) {
+		this.minimumPayment=minimumPayment;
 	}
-	public int getId() {
-		return id;
-	}
-
 	public void setCreditName(String creditName) {
 		this.creditName=creditName;
 	}
 
 	public String getCreditName() {
-		
 		return creditName;
-		
 	}
-	
-	
 	// Returns whether o refers to a Credit object with the same due date 
-	public boolean equals(Object o) {
-		if (o instanceof Credit) {
-			// o is a Credit; cast and compare it
-			Credit other = (Credit)o;
-			return this.dueDate == other.dueDate ;
-		} else {
-			// o is not a credit; cannot be equal
-			return false;
-		}
+	public int CompareTo(Credit other) {
+		return dueDate.compareTo(other.dueDate);
 	}
-
 	public double getcurrentBalance() {
 
 		return currentBalance;
@@ -77,11 +74,10 @@ public class Credit extends CostSources implements  Comparable<Credit>{
 		return creditLimit;
 	}
 
-	public void setCredit(double withdraw) {
+	public void useCredit(double withdraw) {
 		currentBalance+=withdraw;
 	}
-	
-	
+
 	//total credit available
 	public double totalCreditAvalable(double Available) {
 		double totalAvailable=0;
@@ -104,20 +100,38 @@ public class Credit extends CostSources implements  Comparable<Credit>{
 		return currentBalance;
 	}
 	public String toStirng() {
-		return creditName.toString() + " " + Double.toString(currentBalance) + " " +  Double.toString(creditLimit)  + " " +  Double.toString(availableToSpend) ;
+		return  creditName.toString() + " " + Double.toString(currentBalance) + " " +  Double.toString(creditLimit)  + " " +  Double.toString(availableToSpend) ;
 	}
 
-	//put credit name in order
+	//if credit limit is equal check the current balance
 	public int compareTo(Credit other) {
 
-		if(cardId !=other.cardId) {
-			return cardId.compareTo(other.cardId);
+		if(creditLimit== other.creditLimit) {
+			if(currentBalance<other.currentBalance) {
+				return -1;
+			}
+			else if(currentBalance> other.currentBalance )
+			{
+				return 1;
+			}
+			else {
+				return 0;
+			}
+		}else {
+			return creditName.compareTo(other.creditName);
 		}
-		return creditName.compareTo(other.creditName);
+
 	}
-
-
+	public double getAmount() {
+		return amount;
+	}
+	public void setAmount(double amount) {
+		this.amount = amount;
+	}
+	public String getDueDate() {
+		return dueDate;
+	}
+	public void setDueDate(String dueDate) {
+		this.dueDate = dueDate;
+	}
 }
-
-
-
